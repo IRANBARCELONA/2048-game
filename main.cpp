@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 int SIZE = 4;
 char board[4][4] = {{'X', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}};
@@ -23,5 +23,7 @@ void printBoard()
 int main()
 {
     printBoard();
+    cout << "Hello, " << '\n';
+    system("pause");
     return 0;
 }
