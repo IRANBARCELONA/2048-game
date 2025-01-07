@@ -1,10 +1,21 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
+
 int SIZE = 4;
-char board[4][4] = {{'X', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}};
+char board[4][4] = {{'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}};
+void RandomGenerator()
+{
+    srand(static_cast<unsigned>(time(0)));
+    int randomRow = rand() % 4;
+    int randomCol = rand() % 4;
+    board[randomRow][randomCol] = '2';
+}
 void printBoard()
 {
+
     string h_line = "_____|_____|_____|_____";
     string v_line = "     |     |     |     ";
     string star_line = "***************************";
@@ -20,10 +31,13 @@ void printBoard()
     cout << indent << indent << indent << "**" << v_line << "**" << endl;
     cout << indent << indent << indent << star_line << endl;
 }
+
 int main()
 {
+    int row, col;
+    RandomGenerator();
     printBoard();
     cout << "Hello, " << '\n';
-    system("pause");
+    // system("pause");
     return 0;
 }
