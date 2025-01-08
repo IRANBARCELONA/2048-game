@@ -5,13 +5,21 @@
 using namespace std;
 
 int SIZE = 4;
-char board[4][4] = {{'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}};
+char board[4][4] = {{' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' '}};
 void RandomGenerator()
 {
-    srand(static_cast<unsigned>(time(0)));
-    int randomRow = rand() % 4;
-    int randomCol = rand() % 4;
-    board[randomRow][randomCol] = '2';
+
+    while (true)
+    {
+        srand(static_cast<unsigned>(time(0)));
+        int randomRow = rand() % 4;
+        int randomCol = rand() % 4;
+        if (board[randomRow][randomCol] == ' ')
+        {
+            board[randomRow][randomCol] = '2';
+            break;
+        }
+    }
 }
 void printBoard()
 {
