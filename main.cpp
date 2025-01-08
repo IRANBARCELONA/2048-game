@@ -45,7 +45,30 @@ int main()
     int row, col;
     RandomGenerator();
     printBoard();
-    cout << "Hello, " << '\n';
+
+     char PlayerMovement = ' ';
+    cin >> PlayerMovement;
+
+    while (true)
+    {
+        switch (PlayerMovement)
+        {
+        case 'd':
+            MoveRight(board);
+            break;
+        case 's':
+            MoveDown(board);
+        case 'a':
+            MoveLeft(board);
+        case 'w':
+            MoveUp(board);
+        default:
+            cout << "INVALID INPUT !" << endl;
+            break;
+        }
+    }
+
+   
     // system("pause");
     return 0;
 }
