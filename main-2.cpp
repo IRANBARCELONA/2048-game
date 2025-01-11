@@ -33,24 +33,34 @@ void printBoard()
     cout << indent << indent << indent << star_line << endl;
 }
 
-void MoveLeft(char board[SIZE][SIZE]) {
-    for (int k=0;k<SIZE;k++) {
-        for (int i = 0; i < SIZE - 1; i++) {
-            for (int j = 0; j < SIZE - 1; j++) {
-                if (board[k][j] == '0' && board[k][j + 1] != '0') {
+void MoveLeft(char board[SIZE][SIZE])
+{
+    for (int k = 0; k < SIZE; k++)
+    {
+        for (int i = 0; i < SIZE - 1; i++)
+        {
+            for (int j = 0; j < SIZE - 1; j++)
+            {
+                if (board[k][j] == '0' && board[k][j + 1] != '0')
+                {
                     swap(board[k][j], board[k][j + 1]);
                 }
             }
         }
-        for (int j = 0; j < SIZE - 1; j++) {
-            if (board[k][j] == board[k][j + 1] && board[k][j] != '0') {
+        for (int j = 0; j < SIZE - 1; j++)
+        {
+            if (board[k][j] == board[k][j + 1] && board[k][j] != '0')
+            {
                 board[k][j] *= 2;
                 board[k][j + 1] = '0';
             }
         }
-        for (int i = 0; i < SIZE - 1; i++) {
-            for (int j = 0; j < SIZE - 1; j++) {
-                if (board[k][j] == '0' && board[k][j + 1] != '0') {
+        for (int i = 0; i < SIZE - 1; i++)
+        {
+            for (int j = 0; j < SIZE - 1; j++)
+            {
+                if (board[k][j] == '0' && board[k][j + 1] != '0')
+                {
                     swap(board[k][j], board[k][j + 1]);
                 }
             }
@@ -58,24 +68,34 @@ void MoveLeft(char board[SIZE][SIZE]) {
     }
 }
 
-void MoveRight(char board[SIZE][SIZE]) {
-    for (int k=0;k<SIZE;k++) {
-        for (int i = SIZE - 1; i > 0; i--) {
-            for (int j = SIZE - 1; j > 0; j--) {
-                if (board[k][j] == '0' && board[k][j - 1] != '0') {
+void MoveRight(char board[SIZE][SIZE])
+{
+    for (int k = 0; k < SIZE; k++)
+    {
+        for (int i = SIZE - 1; i > 0; i--)
+        {
+            for (int j = SIZE - 1; j > 0; j--)
+            {
+                if (board[k][j] == '0' && board[k][j - 1] != '0')
+                {
                     swap(board[k][j], board[k][j - 1]);
                 }
             }
         }
-        for (int j = SIZE - 1; j > 0; j--) {
-            if (board[k][j] == board[k][j - 1] && board[k][j] != '0') {
+        for (int j = SIZE - 1; j > 0; j--)
+        {
+            if (board[k][j] == board[k][j - 1] && board[k][j] != '0')
+            {
                 board[k][j] *= 2;
                 board[k][j - 1] = '0';
             }
         }
-        for (int i = SIZE - 1; i > 0; i--) {
-            for (int j = SIZE - 1; j > 0; j--) {
-                if (board[k][j] == '0' && board[k][j - 1] != '0') {
+        for (int i = SIZE - 1; i > 0; i--)
+        {
+            for (int j = SIZE - 1; j > 0; j--)
+            {
+                if (board[k][j] == '0' && board[k][j - 1] != '0')
+                {
                     swap(board[k][j], board[k][j - 1]);
                 }
             }
@@ -83,24 +103,34 @@ void MoveRight(char board[SIZE][SIZE]) {
     }
 }
 
-void MoveUp(char board[SIZE][SIZE]) {
-    for (int j = 0; j < SIZE; j++) {
-        for (int i = 0; i < SIZE - 1; i++) {
-            for (int k = 0; k < SIZE - 1; k++) {
-                if (board[k][j] == '0' && board[k + 1][j] != '0') {
+void MoveUp(char board[SIZE][SIZE])
+{
+    for (int j = 0; j < SIZE; j++)
+    {
+        for (int i = 0; i < SIZE - 1; i++)
+        {
+            for (int k = 0; k < SIZE - 1; k++)
+            {
+                if (board[k][j] == '0' && board[k + 1][j] != '0')
+                {
                     swap(board[k][j], board[k + 1][j]);
                 }
             }
         }
-        for (int i = 0; i < SIZE - 1; i++) {
-            if (board[i][j] == board[i + 1][j] && board[i][j] != '0') {
+        for (int i = 0; i < SIZE - 1; i++)
+        {
+            if (board[i][j] == board[i + 1][j] && board[i][j] != '0')
+            {
                 board[i][j] *= 2;
                 board[i + 1][j] = '0';
             }
         }
-        for (int i = 0; i < SIZE - 1; i++) {
-            for (int k = 0; k < SIZE - 1; k++) {
-                if (board[k][j] == '0' && board[k + 1][j] != '0') {
+        for (int i = 0; i < SIZE - 1; i++)
+        {
+            for (int k = 0; k < SIZE - 1; k++)
+            {
+                if (board[k][j] == '0' && board[k + 1][j] != '0')
+                {
                     swap(board[k][j], board[k + 1][j]);
                 }
             }
@@ -108,24 +138,34 @@ void MoveUp(char board[SIZE][SIZE]) {
     }
 }
 
-void MoveDown(char board[SIZE][SIZE]) {
-    for (int j = 0; j < SIZE; j++) {
-        for (int i = SIZE - 1; i > 0; i--) {
-            for (int k = SIZE - 1; k > 0; k--) {
-                if (board[k][j] == '0' && board[k - 1][j] != '0') {
+void MoveDown(char board[SIZE][SIZE])
+{
+    for (int j = 0; j < SIZE; j++)
+    {
+        for (int i = SIZE - 1; i > 0; i--)
+        {
+            for (int k = SIZE - 1; k > 0; k--)
+            {
+                if (board[k][j] == '0' && board[k - 1][j] != '0')
+                {
                     swap(board[k][j], board[k - 1][j]);
                 }
             }
         }
-        for (int i = SIZE - 1; i > 0; i--) {
-            if (board[i][j] == board[i - 1][j] && board[i][j] != '0') {
+        for (int i = SIZE - 1; i > 0; i--)
+        {
+            if (board[i][j] == board[i - 1][j] && board[i][j] != '0')
+            {
                 board[i][j] *= 2;
                 board[i - 1][j] = '0';
             }
         }
-        for (int i = SIZE - 1; i > 0; i--) {
-            for (int k = SIZE - 1; k > 0; k--) {
-                if (board[k][j] == '0' && board[k - 1][j] != '0') {
+        for (int i = SIZE - 1; i > 0; i--)
+        {
+            for (int k = SIZE - 1; k > 0; k--)
+            {
+                if (board[k][j] == '0' && board[k - 1][j] != '0')
+                {
                     swap(board[k][j], board[k - 1][j]);
                 }
             }
@@ -137,7 +177,7 @@ int main()
 {
     RandomGenerator();
     printBoard();
-
+   
     // cout << "Hello, " << '\n';
     // system("pause");
     return 0;
