@@ -10,7 +10,7 @@ vector<vector<int>> board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0,
 
 // bool checklose(int board[SIZE][SIZE])
 // {
-//     for (int i = 0; i < SIZE; i++)
+//      for (int i = 0; i < SIZE; i++)
 //     {
 //         for (int j = 0; j < SIZE; j++)
 //         {
