@@ -27,9 +27,7 @@ vector<vector<int>> board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0,
 //     }
 //     return true;
 // }
-// bool checkwin(char board [SIZE][SIZE]){
 
-// }
 void RandomGenerator()
 {
 
@@ -211,6 +209,7 @@ int main()
     while (true)
     {
         RandomGenerator();
+        system("cls");
         printBoard();
         char PlayerMovement = ' ';
         cin >> PlayerMovement;
@@ -232,8 +231,9 @@ int main()
             cout << "INVALID INPUT !" << endl;
             break;
         }
+        
     }
     // cout << "Hello, " << '\n';
-    // system("pause");
+    
     return 0;
 }
