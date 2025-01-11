@@ -5,13 +5,21 @@
 using namespace std;
 
 int SIZE = 4;
-char board[4][4] = {{'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}, {'.', '.', '.', '.'}};
+char board[4][4] = {{' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' '}};
 void RandomGenerator()
 {
-    srand(static_cast<unsigned>(time(0)));
-    int randomRow = rand() % 4;
-    int randomCol = rand() % 4;
-    board[randomRow][randomCol] = '2';
+
+    while (true)
+    {
+        srand(static_cast<unsigned>(time(0)));
+        int randomRow = rand() % 4;
+        int randomCol = rand() % 4;
+        if (board[randomRow][randomCol] == ' ')
+        {
+            board[randomRow][randomCol] = '2';
+            break;
+        }
+    }
 }
 void printBoard()
 {
@@ -37,7 +45,30 @@ int main()
     int row, col;
     RandomGenerator();
     printBoard();
-    cout << "Hello, " << '\n';
+
+     char PlayerMovement = ' ';
+    cin >> PlayerMovement;
+
+    while (true)
+    {
+        switch (PlayerMovement)
+        {
+        case 'd':
+            MoveRight(board);
+            break;
+        case 's':
+            MoveDown(board);
+        case 'a':
+            MoveLeft(board);
+        case 'w':
+            MoveUp(board);
+        default:
+            cout << "INVALID INPUT !" << endl;
+            break;
+        }
+    }
+
+   
     // system("pause");
     return 0;
 }
