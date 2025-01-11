@@ -20,7 +20,7 @@ void printBoard()
     string h_line = "_____|_____|_____|_____";
     string v_line = "     |     |     |     ";
     string star_line = "***************************";
-    string indent = "\t\t\t"; // 4 indent to reach board = 48 space
+    string indent = "\t\t\t"; 
     cout << indent << indent << indent << star_line << endl;
     cout << indent << indent << indent << "**  " << board[0][0] << "  |  " << board[0][1] << "  |  " << board[0][2] << "  |  " << board[0][3] << "  **" << endl;
     cout << indent << indent << indent << "**" << h_line << "**" << endl;
