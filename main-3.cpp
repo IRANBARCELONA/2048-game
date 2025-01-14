@@ -27,10 +27,9 @@ bool checklose(vector<vector<int>> &board)
 
 void RandomGenerator()
 {
-
+srand(static_cast<unsigned>(time(0)));
     while (true)
     {
-        srand(static_cast<unsigned>(time(0)));
         int randomRow = rand() % 4;
         int randomCol = rand() % 4;
         if (board[randomRow][randomCol] == 0)
