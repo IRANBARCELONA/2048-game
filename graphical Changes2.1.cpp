@@ -38,21 +38,6 @@ srand(static_cast<unsigned>(time(0)));
     }
 }
 
-void RandomGenerator2()
-{
-srand(static_cast<unsigned>(time(0)));
-    while (true)
-    {
-        int randomRow = rand() % 4;
-        int randomCol = rand() % 4;
-        if (board[randomRow][randomCol] == 0)
-        {
-            board[randomRow][randomCol] = 2;
-            break;
-        }
-    }
-}
-
 void snow()
 {
     int r = rand() % 23;
@@ -305,7 +290,7 @@ int main()
         {
             RandomGenerator();
             if(FirstGenerate)
-                RandomGenerator2();
+                RandomGenerator();
 
         }
         system("cls");
