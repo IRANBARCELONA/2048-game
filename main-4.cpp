@@ -74,13 +74,14 @@ void space(int a)
         cout << "   ";
 }
 
-void printBoardWhite(vector<vector<int>> &board){
+void printBoardWhite(vector<vector<int>> &board)
+{
     string h_line = "_____|_____|_____|_____";
     string v_line = "     |     |     |     ";
-    string star_line= "***************************";
-    string indent = "\t\t\t";//4 indent to reach board = 48 space
-    cout << indent<< "  &&                          "<<indent<< star_line<<endl; //+
-    cout << " /\\   /\\    \\  /  "<< "        &&&&      mmm               "<< indent<< "** " << getColor(board[0][0]) << board[0][0] << resetColor();
+    string star_line = "***************************";
+    string indent = "\t\t\t";                                                          // 4 indent to reach board = 48 space
+    cout << indent << "  &&                          " << indent << star_line << endl; //+
+    cout << " /\\   /\\    \\  /  " << "        &&&&      mmm               " << indent << "** " << getColor(board[0][0]) << board[0][0] << resetColor();
     space(board[0][0]);
     cout << "| ";
     cout << getColor(board[0][1]) << board[0][1] << resetColor();
@@ -89,9 +90,9 @@ void printBoardWhite(vector<vector<int>> &board){
     space(board[0][2]);
     cout << "| " << getColor(board[0][3]) << board[0][3] << resetColor();
     space(board[0][3]);
-    cout <<"**"<< endl;
-    cout << " \\   /__\\    \\/      "<< "     &&  &         mmm          m"<< indent<< "**"<< h_line <<"**"<<endl;
-    cout << "  \\ /    \\   /          "<< "   &  &      | ---- \\     /--"<< indent<< "** "<< getColor(board[1][0]) << board[1][0] << resetColor();
+    cout << "**" << endl;
+    cout << " \\   /__\\    \\/      " << "     &&  &         mmm          m" << indent << "**" << h_line << "**" << endl;
+    cout << "  \\ /    \\   /          " << "   &  &      | ---- \\     /--" << indent << "** " << getColor(board[1][0]) << board[1][0] << resetColor();
     space(board[1][0]);
     cout << "| " << getColor(board[1][1]) << board[1][1] << resetColor();
     space(board[1][1]);
@@ -99,9 +100,9 @@ void printBoardWhite(vector<vector<int>> &board){
     space(board[1][2]);
     cout << "| " << getColor(board[1][3]) << board[1][3] << resetColor();
     space(board[1][1]);
-    cout <<"**"<< endl;
-    cout << " \\//      \\ /           "<< "   && &      |  &&   |&& |  &&"<< indent<< "**"<< h_line <<"**"<< endl;
-    cout << indent<< "    & &      \\      /     \\    "<< indent<< "** " << getColor(board[2][0]) << board[2][0] << resetColor();
+    cout << "**" << endl;
+    cout << " \\//      \\ /           " << "   && &      |  &&   |&& |  &&" << indent << "**" << h_line << "**" << endl;
+    cout << indent << "    & &      \\      /     \\    " << indent << "** " << getColor(board[2][0]) << board[2][0] << resetColor();
     space(board[2][0]);
     cout << "| " << getColor(board[2][1]) << board[2][1] << resetColor();
     space(board[2][1]);
@@ -109,9 +110,9 @@ void printBoardWhite(vector<vector<int>> &board){
     space(board[2][2]);
     cout << "| " << getColor(board[2][3]) << board[2][3] << resetColor();
     space(board[2][3]);
-    cout <<"**"<< endl;
-    cout << " \\      /   \\   /       "<< "     &&         ----         --"<< indent<< "**"<< h_line <<"**"<< endl;
-    cout << " |\\    /|    \\ /        "<< "      &            /       \\   "<< indent<< "** "<< getColor(board[3][0]) << board[3][0] << resetColor();
+    cout << "**" << endl;
+    cout << " \\      /   \\   /       " << "     &&         ----         --" << indent << "**" << h_line << "**" << endl;
+    cout << " |\\    /|    \\ /        " << "      &            /       \\   " << indent << "** " << getColor(board[3][0]) << board[3][0] << resetColor();
     space(board[3][0]);
     cout << "| " << getColor(board[3][1]) << board[3][1] << resetColor();
     space(board[3][1]);
@@ -119,16 +120,16 @@ void printBoardWhite(vector<vector<int>> &board){
     space(board[3][2]);
     cout << "| " << getColor(board[3][3]) << board[3][3] << resetColor();
     space(board[3][3]);
-    cout << "**"<< endl;
-    cout << " | \\  / |     /         "<< "       \\            \\     / "<< indent<< "**"<< v_line <<"**"<< endl;
-    cout << " |  \\/  |    /          "<< "        \\        ///////\\\\\\\\\\"<< "\t\t       "<< "*                           *" << endl;
-    cout << indent<< "       _/\\      ////////\\\\\\\\\\"<< "\t\t      "<< "*                             *" << endl;
-    cout << " \\   |    /\\    \\     / -----"<< " /   \\     ||  _______"<< "\t\t     "<< "*    ";
+    cout << "**" << endl;
+    cout << " | \\  / |     /         " << "       \\            \\     / " << indent << "**" << v_line << "**" << endl;
+    cout << " |  \\/  |    /          " << "        \\        ///////\\\\\\\\\\" << "\t\t       " << "*                           *" << endl;
+    cout << indent << "       _/\\      ////////\\\\\\\\\\" << "\t\t      " << "*                             *" << endl;
+    cout << " \\   |    /\\    \\     / -----" << " /   \\     ||  _______" << "\t\t     " << "*    ";
     snow();
-    cout<<"   *" << endl;
-    cout << " |\\  |   /__\\   |\\   /| |__ "<< "_/     |    ||         "<< "\t\t     "<< "*                               *" << endl;
-    cout << " | \\ |  /    \\  | \\ / | |  "<< "/       \\     \\\\\\\\\\\\\\/////"<< "\t\t     "<< "*                               *" << endl;
-    cout << " |  \\| /      \\ |  /  | |----"<<indent <<"\t\t     ******"<<star_line;
+    cout << "   *" << endl;
+    cout << " |\\  |   /__\\   |\\   /| |__ " << "_/     |    ||         " << "\t\t     " << "*                               *" << endl;
+    cout << " | \\ |  /    \\  | \\ / | |  " << "/       \\     \\\\\\\\\\\\\\/////" << "\t\t     " << "*                               *" << endl;
+    cout << " |  \\| /      \\ |  /  | |----" << indent << "\t\t     ******" << star_line;
 }
 
 void reddead()
@@ -147,7 +148,8 @@ void reddead()
     }
 }
 
-void printBoardArthur(vector<vector<int>> &board){
+void printBoardArthur(vector<vector<int>> &board)
+{
     // int x = 1;
     string h_line = "_____|_____|_____|_____";
     string v_line = "     |     |     |     ";
@@ -213,7 +215,7 @@ void gtasa()
 }
 void printBoardGTA(vector<vector<int>> &board)
 {
-    int x = 1;
+
     string h_line = "_____|_____|_____|_____";
     string v_line = "     |     |     |     ";
     string star_line = "***************************";
@@ -271,17 +273,17 @@ void printBoardGTA(vector<vector<int>> &board)
     cout << " |        \\/-----\\/        |" << "\t            " << endl;
     cout << "|____|_______________(@)" << endl;
 }
-void BoardPicker(vector<vector<int>> &board, int pick)
+void BoardPicker(vector<vector<int>> &board, char pick)
 {
     switch (pick)
     {
-    case 1:
+    case '1':
         printBoardWhite(board);
         break;
-    case 2:
+    case '2':
         printBoardArthur(board);
         break;
-    case 3:
+    case '3':
         printBoardGTA(board);
         break;
     default:
@@ -573,17 +575,17 @@ vector<vector<int>> LoadSave(string &filename)
     }
 }
 
-
 void InvalidInput()
 {
     cout << "INVALID INPUT!" << endl;
     usleep(1500000);
 }
+
 int main()
 {
     vector<vector<int>> board;
     bool CanGenerate = true;
-    int theme;
+    char theme;
     string filename = "board.txt";
     ifstream load(filename);
 
@@ -594,8 +596,7 @@ int main()
     if (load.good())
     {
         cout << "Saved game found! Wanna continue last game? (if not, new game will be started) (y/n) :";
-        char ch;
-        cin >> ch;
+        char ch = _getch();
         bool x = true;
         while (x)
         {
@@ -613,7 +614,7 @@ int main()
                 board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
                 cout << "Pick a board :" << endl;
                 cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
-                cin >> theme;
+                theme = _getch();
                 x = false;
             }
             else
@@ -626,8 +627,7 @@ int main()
 
         cout << "No saved data found." << endl;
         cout << "New Game? (y/n) :";
-        char check;
-        cin >> check;
+        char check = _getch();
         bool x = true;
         while (x)
         {
@@ -635,22 +635,20 @@ int main()
             {
                 cout << "Pick a board :" << endl;
                 cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
-
-                cin >> theme;
+                theme = _getch();
                 x = false;
+                break;
             }
-
             else if (check == 'n')
             {
-                cout << "Bye my friend ...." << endl;
-                usleep(3000000);
+                cout << "\nBye my friend ...." << endl;
                 return EXIT_SUCCESS;
             }
             else
                 cout << "what ? (y/n):";
         }
     }
-    bool wrongInput = false;
+
     while (true)
     {
         bool cheker = checklose(board);
@@ -658,17 +656,21 @@ int main()
         {
             cout << "You Lost ! ";
             cout << "Wanna start a new game ? (y/n)";
-            char check;
-            cin >> check;
+            char check = _getch();
             bool x = true;
             while (x)
             {
+
                 if (check == 'y')
+                {
+                    cout << "Pick a board :" << endl;
+                    cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
+                    theme = _getch();
                     x = false;
+                }
                 else if (check == 'n')
                 {
                     cout << "Bye my friend ...." << endl;
-                    usleep(3000000);
                     return EXIT_SUCCESS;
                 }
                 else
@@ -679,22 +681,13 @@ int main()
             CanGenerate = true;
 
         system("cls");
+        
         if (CanGenerate)
-        {
             RandomGenerator(board);
-            BoardPicker(board, theme);
-            cout << "\nDo a move (w/s/a/d) : ";
-        }
-        else
-        {
-            BoardPicker(board, theme);
-            cout << "save and quit by pressing 'q' " << endl;
-            if (wrongInput)
-                cout << "Invalid input !  (w/s/a/d) : ";
-            else
-                cout << "\nDo a move (w/s/a/d) : ";
-        }
 
+        BoardPicker(board, theme);
+        cout << "\n *Press Q to quit game* \n";
+        cout << "\n Do a move (w/s/a/d) : ";
         // get input
         char PlayerMovement = _getch();
 
@@ -735,6 +728,29 @@ int main()
             }
             else
                 CanGenerate = false;
+            break;
+        case 'q':
+            if (true)
+            {
+                cout << "\nDo you wnat to exit ? (y/n)";
+                char QuitSure = _getch();
+                if (QuitSure == 'y')
+                {
+                    cout << "\nDo you wnat to save this game or not ? (y/n)";
+                    char SaveSure = _getch();
+                    if (SaveSure == 'y')
+                    {
+                        SaveBoard(board, filename);
+                        cout << "\ngame successfully saved !";
+                        return 0;
+                    }
+                    else
+                        return 0;
+                }
+                else
+                    CanGenerate = false;
+            }
+
             break;
         default:
             InvalidInput();
