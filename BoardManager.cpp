@@ -5,6 +5,8 @@
 #include <vector>
 #include <unistd.h>
 #include <fstream>
+#include <conio.h>
+
 using namespace std;
 
 #define SIZE 4
@@ -203,6 +205,74 @@ void printBoardArthur(vector<vector<int>> &board)
     reddead();
 }
 
+void gtasa(){
+    int r=rand()%3;
+    for(int i=0;i<3;i++){
+        if(i==r)
+            cout<<"|";
+        cout<<" ";
+    }
+}
+void printBoardGTA(vector<vector<int>> &board)
+{
+    int x=1;
+    string h_line = "_____|_____|_____|_____";
+    string v_line = "     |     |     |     ";
+    string star_line= "***************************";
+    string indent = "\t\t\t";//4 indent to reach board = 48 space
+    cout << indent<< "              _________       "<<indent<< star_line<<endl; //+
+    cout << "  _________________ "<< "                 /         \\     "<< indent<< "** " << board[0][0];
+    space(board[0][0]);
+    cout << "| ";
+    cout << board[0][1];
+    space(board[0][1]);
+    cout << "| " << board[0][2];
+    space(board[0][2]);
+    cout << "| " << board[0][3];
+    space(board[0][3]);
+    cout <<"**"<< endl;
+    cout << " |     _____       | "<< "               |SAN ANDREAS|"<< indent<< "**"<< h_line <<"**"<<endl;
+    cout << " |    |     \\      | "<< "              _\\___________/_ "<< indent<< "** "<< board[1][0];
+    space(board[1][0]);
+    cout << "| " << board[1][1];
+    space(board[1][1]);
+    cout << "| " << board[1][2];
+    space(board[1][2]);
+    cout << "| " << board[1][3];
+    space(board[1][1]);
+    cout <<"**"<< endl;
+    cout << " |    |   __/      | "<< "             / | ____ ____ | \\"<< indent<< "**"<< h_line <<"**"<< endl;
+    cout << " |    |    \\       | "<< "             \\ |-|__/-\\__|-| /"<< indent<< "** " << board[2][0];
+    space(board[2][0]);
+    cout << "| " << board[2][1];
+    space(board[2][1]);
+    cout << "| " << board[2][2];
+    space(board[2][2]);
+    cout << "| " << board[2][3];
+    space(board[2][3]);
+    cout <<"**"<< endl;
+    cout << " |    |     \\/\\__  | "<< "              (|    /_\\    |)"<< indent<< "**"<< h_line <<"**"<< endl;
+    cout << " |         \\    /  | "<< "                \\  //_\\\\ /"<< "\t\t\t        "<< "** "<< board[3][0];
+    space(board[3][0]);
+    cout << "| " << board[3][1];
+    space(board[3][1]);
+    cout << "| " << board[3][2];
+    space(board[3][2]);
+    cout << "| " << board[3][3];
+    space(board[3][3]);
+    cout << "**"<< endl;
+    cout << " |          |/\\|"<< "   |                  \\       / "<< indent<< "**"<< v_line <<"**"<< endl;
+    cout << " |_________________|     ";
+    gtasa();
+    cout << "  ______/ \\-----/ \\______"<< "\t\t        "<< star_line << endl;
+    cout << indent;
+    gtasa();
+    cout << "  /      \\  \\   /  /      \\"<< "\t      "<< endl;
+    cout << "_______________________ ";
+    gtasa();
+    cout << " |        \\/-----\\/        |"<< "\t            "<< endl;
+    cout << "|____|_______________(@)" << endl;
+}
 void BoardPicker(vector<vector<int>> &board, int pick)
 {
     switch (pick)
@@ -212,6 +282,9 @@ void BoardPicker(vector<vector<int>> &board, int pick)
         break;
     case 2:
         printBoardArthur(board);
+        break;
+    case 3:
+        printBoardGTA(board);
         break;
     default:
         break;
@@ -447,7 +520,7 @@ int main()
             {
                 board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
                 cout << "Pick a board :" << endl;
-                cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) : ";
+                cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
                 cin >> theme;
                 x = false;
             
@@ -470,7 +543,7 @@ int main()
             if (check == 'y')
             {
                 cout << "Pick a board :" << endl;
-                cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) : ";
+                cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
                 
                 cin >> theme;
                 x = false;
@@ -533,8 +606,7 @@ int main()
         }
 
         // get input
-        char PlayerMovement = ' ';
-        cin >> PlayerMovement;
+        char PlayerMovement = _getch();
 
         if (PlayerMovement == 'w')
         {
