@@ -578,12 +578,15 @@ vector<vector<int>> LoadSave(string &filename)
 char LoadLastTheme(string &filename)
 {
     ifstream load(filename);
-    if (!load.is_open()) return ' ';
+    if (!load.is_open())
+        return ' ';
 
     string line;
     char theme = '\0';
-    for (int i = 1; i <= 5 && getline(load, line); i++) {
-        if (i == 5 && !line.empty()) {
+    for (int i = 1; i <= 5 && getline(load, line); i++)
+    {
+        if (i == 5 && !line.empty())
+        {
             theme = line[0];
         }
     }
@@ -601,7 +604,7 @@ int main()
 {
     vector<vector<int>> board;
     bool CanGenerate = true;
-    bool FirstGenerate=true;
+    bool FirstGenerate = true;
     char theme;
     string filename = "board.txt";
     ifstream load(filename);
@@ -672,19 +675,26 @@ int main()
         bool cheker = checklose(board);
         if (cheker)
         {
+            if (filesystem::exists(filename))
+            {
+                filesystem::remove(filename);
+            }
             cout << "You Lost ! ";
             cout << "Wanna start a new game ? (y/n)";
-            char check = _getch();
+            
+            char check;
             bool x = true;
             while (x)
             {
-
+                check = _getch();
                 if (check == 'y')
                 {
+                    board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
                     cout << "Pick a board :" << endl;
                     cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
                     theme = _getch();
                     x = false;
+                    break;
                 }
                 else if (check == 'n')
                 {
@@ -695,17 +705,16 @@ int main()
                     cout << "what ? (y/n):";
             }
         }
-        
 
         system("cls");
 
-
-if (FirstGenerate){
+        if (FirstGenerate)
+        {
             RandomGenerator(board);
             RandomGenerator(board);
-            FirstGenerate=false;
+            FirstGenerate = false;
         }
-        else if(CanGenerate)
+        else if (CanGenerate)
             RandomGenerator(board);
 
         BoardPicker(board, theme);

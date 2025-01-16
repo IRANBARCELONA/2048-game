@@ -44,8 +44,6 @@ string resetColor()
 {
     return "\033[0m";
 }
-// Board drawing
-
 void snow()
 {
     int r = rand() % 23;
