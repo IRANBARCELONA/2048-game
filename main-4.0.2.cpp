@@ -632,6 +632,8 @@ int main()
             }
             else if (ch == 'n')
             {
+                load.close();
+                filesystem::remove(filename);
                 board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
                 cout << "Pick a board :" << endl;
                 cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
@@ -669,19 +671,16 @@ int main()
                 cout << "what ? (y/n):";
         }
     }
-
+    load.close();
     while (true)
     {
         bool cheker = checklose(board);
         if (cheker)
         {
-            if (filesystem::exists(filename))
-            {
-                filesystem::remove(filename);
-            }
+            filesystem::remove(filename);
             cout << "You Lost ! ";
             cout << "Wanna start a new game ? (y/n)";
-            
+
             char check;
             bool x = true;
             while (x)
