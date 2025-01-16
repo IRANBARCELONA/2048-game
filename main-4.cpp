@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <string.h>
+#include <string>
 #include <cstdlib>
 #include <ctime>
 #include <conio.h>
@@ -532,7 +532,7 @@ void MoveDown(vector<vector<int>> &board)
 }
 
 // Saving methods
-void SaveBoard(vector<vector<int>> &board, string &filename)
+void SaveBoard(vector<vector<int>> &board, string &filename, char themeAdress)
 {
     ofstream load(filename);
     if (load.is_open())
@@ -545,7 +545,7 @@ void SaveBoard(vector<vector<int>> &board, string &filename)
             }
             load << endl;
         }
-
+        load << themeAdress;
         load.close();
     }
     else
@@ -575,6 +575,22 @@ vector<vector<int>> LoadSave(string &filename)
     }
 }
 
+char LoadLastTheme(string &filename)
+{
+    ifstream load(filename);
+    if (!load.is_open()) return ' ';
+
+    string line;
+    char theme = '\0';
+    for (int i = 1; i <= 5 && getline(load, line); i++) {
+        if (i == 5 && !line.empty()) {
+            theme = line[0];
+        }
+    }
+
+    load.close();
+    return theme;
+}
 void InvalidInput()
 {
     cout << "INVALID INPUT!" << endl;
@@ -604,9 +620,10 @@ int main()
             {
                 cout << "Loading savedgame..." << endl;
                 board = LoadSave(filename);
+                theme = LoadLastTheme(filename);
                 CanGenerate = false;
                 x = false;
-                usleep(3000000);
+                usleep(2000000);
                 break;
             }
             else if (ch == 'n')
@@ -677,11 +694,10 @@ int main()
                     cout << "what ? (y/n):";
             }
         }
-        else
-            CanGenerate = true;
+        
 
         system("cls");
-        
+
         if (CanGenerate)
             RandomGenerator(board);
 
@@ -740,7 +756,7 @@ int main()
                     char SaveSure = _getch();
                     if (SaveSure == 'y')
                     {
-                        SaveBoard(board, filename);
+                        SaveBoard(board, filename, theme);
                         cout << "\ngame successfully saved !";
                         return 0;
                     }
