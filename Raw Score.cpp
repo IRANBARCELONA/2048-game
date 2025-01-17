@@ -8,7 +8,8 @@
 using namespace std;
 
 #define SIZE 4
-int score=0;
+// public Varibles
+int score = 0;
 
 string getColor(int number)
 {
@@ -131,7 +132,8 @@ void printBoardWhite(vector<vector<int>> &board)
     cout << " |\\  |   /__\\   |\\   /| |__ " << "_/     |    ||         " << "\t\t     " << "*                               *" << endl;
     cout << " | \\ |  /    \\  | \\ / | |  " << "/       \\     \\\\\\\\\\\\\\/////" << "\t\t     " << "*                               *" << endl;
     cout << " |  \\| /      \\ |  /  | |----" << indent << "\t\t     ******" << star_line;
-    cout << '\n' << "Score:  " << score;
+    cout << '\n'
+         << "Score:  " << score;
 }
 
 void reddead()
@@ -407,7 +409,7 @@ void MoveLeft(vector<vector<int>> &board)
             {
                 board[k][j] *= 2;
                 board[k][j + 1] = 0;
-                score +=board[k][j];
+                score += board[k][j];
             }
         }
         for (int i = 0; i < SIZE - 1; i++)
@@ -445,7 +447,7 @@ void MoveRight(vector<vector<int>> &board)
             {
                 board[k][j] *= 2;
                 board[k][j - 1] = 0;
-                score +=board[k][j];
+                score += board[k][j];
             }
         }
         for (int i = SIZE - 1; i > 0; i--)
@@ -483,7 +485,7 @@ void MoveUp(vector<vector<int>> &board)
             {
                 board[i][j] *= 2;
                 board[i + 1][j] = 0;
-                score +=board[i][j];
+                score += board[i][j];
             }
         }
         for (int i = 0; i < SIZE - 1; i++)
@@ -521,7 +523,7 @@ void MoveDown(vector<vector<int>> &board)
             {
                 board[i][j] *= 2;
                 board[i - 1][j] = 0;
-                score +=board[i][j];
+                score += board[i][j];
             }
         }
         for (int i = SIZE - 1; i > 0; i--)
@@ -538,7 +540,7 @@ void MoveDown(vector<vector<int>> &board)
 }
 
 // Saving methods
-void SaveBoard(vector<vector<int>> &board, string &filename, char themeAdress)
+void SaveBoard(vector<vector<int>> &board, string &filename, char themeAdress, int RawScore)
 {
     ofstream load(filename);
     if (load.is_open())
@@ -551,7 +553,8 @@ void SaveBoard(vector<vector<int>> &board, string &filename, char themeAdress)
             }
             load << endl;
         }
-        load << themeAdress;
+        load << themeAdress << endl;
+        load << RawScore;
         load.close();
     }
     else
@@ -584,18 +587,40 @@ vector<vector<int>> LoadSave(string &filename)
 char LoadLastTheme(string &filename)
 {
     ifstream load(filename);
-    if (!load.is_open()) return ' ';
+    if (!load.is_open())
+        return ' ';
 
     string line;
     char theme = '\0';
-    for (int i = 1; i <= 5 && getline(load, line); i++) {
-        if (i == 5 && !line.empty()) {
+    for (int i = 1; i <= 5 && getline(load, line); i++)
+    {
+        if (i == 5 && !line.empty())
+        {
             theme = line[0];
         }
     }
 
     load.close();
     return theme;
+}
+
+int LastRawScore(string &filename)
+{
+    ifstream load(filename);
+    if (!load.is_open())
+        return 0;
+    int number = 0;
+    string line;
+    for (int i = 0; i < 6 && getline(load, line); ++i)
+        ;
+
+    if (!line.empty())
+    {
+        number = stoi(line);
+    }
+
+    load.close();
+    return number;
 }
 void InvalidInput()
 {
@@ -607,7 +632,7 @@ int main()
 {
     vector<vector<int>> board;
     bool CanGenerate = true;
-    bool FirstGenerate=true;
+    bool FirstGenerate = true;
     char theme;
     string filename = "board.txt";
     ifstream load(filename);
@@ -628,6 +653,7 @@ int main()
                 cout << "Loading savedgame..." << endl;
                 board = LoadSave(filename);
                 theme = LoadLastTheme(filename);
+                score = LastRawScore(filename);
                 CanGenerate = false;
                 x = false;
                 usleep(2000000);
@@ -635,6 +661,8 @@ int main()
             }
             else if (ch == 'n')
             {
+                load.close();
+                filesystem::remove(filename);
                 board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
                 cout << "Pick a board :" << endl;
                 cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
@@ -672,12 +700,13 @@ int main()
                 cout << "what ? (y/n):";
         }
     }
-
+    load.close();
     while (true)
     {
         bool cheker = checklose(board);
         if (cheker)
         {
+            filesystem::remove(filename);
             cout << "You Lost ! ";
             cout << "Wanna start a new game ? (y/n)";
             char check = _getch();
@@ -687,6 +716,7 @@ int main()
 
                 if (check == 'y')
                 {
+                    score = 0;
                     cout << "Pick a board :" << endl;
                     cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
                     theme = _getch();
@@ -701,17 +731,16 @@ int main()
                     cout << "what ? (y/n):";
             }
         }
-        
 
         system("cls");
 
-
-if (FirstGenerate){
+        if (FirstGenerate)
+        {
             RandomGenerator(board);
             RandomGenerator(board);
-            FirstGenerate=false;
+            FirstGenerate = false;
         }
-        else if(CanGenerate)
+        else if (CanGenerate)
             RandomGenerator(board);
 
         BoardPicker(board, theme);
@@ -769,7 +798,7 @@ if (FirstGenerate){
                     char SaveSure = _getch();
                     if (SaveSure == 'y')
                     {
-                        SaveBoard(board, filename, theme);
+                        SaveBoard(board, filename, theme, score);
                         cout << "\ngame successfully saved !";
                         return 0;
                     }
