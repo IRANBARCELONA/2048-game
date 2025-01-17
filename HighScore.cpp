@@ -754,6 +754,7 @@ int main()
                 if (check == 'y')
                 {
                     score = 0;
+                    board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
                     cout << "Pick a board :" << endl;
                     cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
                     theme = _getch();
