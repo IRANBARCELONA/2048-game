@@ -691,6 +691,7 @@ int main()
                 board = LoadSave(filename);
                 theme = LoadLastTheme(filename);
                 score = LastRawScore(filename);
+                FirstGenerate=false;
                 CanGenerate = false;
                 LastGameContinue = false;
                 usleep(2000000);
