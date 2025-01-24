@@ -13,7 +13,7 @@ using namespace std;
 #define SIZE 4
 // public Varibles
 int score = 0;
-int x=1;
+int x = 1;
 
 string getColor(int number)
 {
@@ -52,14 +52,16 @@ string resetColor()
 }
 // Board drawing
 
-void snow(){
-    int r=rand()%23;
-    for(int i=0;i<23;i++){
-        if(i==r)
-            cout<<"*";
-        if(i==23-r)
-            cout<<"*";
-        cout<<" ";
+void snow()
+{
+    int r = rand() % 23;
+    for (int i = 0; i < 23; i++)
+    {
+        if (i == r)
+            cout << "*";
+        if (i == 23 - r)
+            cout << "*";
+        cout << " ";
     }
 }
 
@@ -126,39 +128,46 @@ void printBoardWhite(vector<vector<int>> &board)
     space(board[3][2]);
     cout << "| " << getColor(board[3][3]) << board[3][3] << resetColor();
     space(board[3][3]);
-    
-    cout << "**"<< endl;
-    cout << " | \\  / |     /         "<< "       \\            \\     / "<< indent<< "**"<< h_line <<"**"<< endl;
-    cout << " |  \\/  |    /          "<< "        \\        ///////\\\\\\\\\\"<< "\t\t       "<< "* ";
+
+    cout << "**" << endl;
+    cout << " | \\  / |     /         " << "       \\            \\     / " << indent << "**" << h_line << "**" << endl;
+    cout << " |  \\/  |    /          " << "        \\        ///////\\\\\\\\\\" << "\t\t       " << "* ";
     snow();
     cout << "*" << endl;
-    cout << indent<< "       _/\\      ////////\\\\\\\\\\"<< "\t\t      " << "*  ";
+    cout << indent << "       _/\\      ////////\\\\\\\\\\" << "\t\t      " << "*  ";
     snow();
     cout << " *" << endl;
-    cout << " \\   |    /\\    \\     / -----"<< " /   \\     ||  _______"<< "\t\t     "<< "*    ";
+    cout << " \\   |    /\\    \\     / -----" << " /   \\     ||  _______" << "\t\t     " << "*    ";
     snow();
-    cout<<"  *" << endl;
-    cout << " |\\  |   /__\\   |\\   /| |__ "<< "_/     |    ||         "<< "\t\t     "<< "*    ";
+    cout << "  *" << endl;
+    cout << " |\\  |   /__\\   |\\   /| |__ " << "_/     |    ||         " << "\t\t     " << "*    ";
     snow();
-    cout<<"  *" << endl;
-    cout << " | \\ |  /    \\  | \\ / | |  "<< "/       \\     \\\\\\\\\\\\\\/////"<< "\t\t     "<< "*    ";
+    cout << "  *" << endl;
+    cout << " | \\ |  /    \\  | \\ / | |  " << "/       \\     \\\\\\\\\\\\\\/////" << "\t\t     " << "*    ";
     snow();
-    cout<<"  *" << endl;
-    cout << " |  \\| /      \\ |  /  | |----"<<indent <<"\t\t     ******"<<star_line<<endl;
-    cout << '\n' << "                                                                                 "<< "\033[1;35m" << "Score:  "<< resetColor() << "\033[1;34m" << score << resetColor();
+    cout << "  *" << endl;
+    cout << " |  \\| /      \\ |  /  | |----" << indent << "\t\t     ******" << star_line << endl;
+    cout << '\n'
+         << "                                                                                 " << "\033[1;35m" << "Score:  " << resetColor() << "\033[1;34m" << score << resetColor();
 }
 
 void reddead()
 {
-    if (x == 1){
+    if (x == 1)
+    {
         cout << "RED";
-        x++;}
-    else if (x == 2){
+        x++;
+    }
+    else if (x == 2)
+    {
         cout << "    DEAD";
-        x++;}
-    else if (x == 3){
+        x++;
+    }
+    else if (x == 3)
+    {
         cout << "         REDEMPTION";
-        x++;}
+        x++;
+    }
     else
     {
         cout << "RED DEAD REDEMPTION";
@@ -215,7 +224,7 @@ void printBoardArthur(vector<vector<int>> &board)
     cout << "**" << endl;
     cout << " |          |/\\|" << "   |           / \\___| \\/\\_     |_ " << indent << "**" << v_line << "**" << endl;
     cout << " |_________________|" << "          /\\  ___|-/   \\_  /   \\_" << "\t\t        " << star_line << endl;
-    cout << indent << "      | \\____/ |     \\|       \\ " << "\t\t         " <<"\033[1;35m" << "Score:  "<< resetColor() << "\033[1;34m" << score << resetColor() << endl;
+    cout << indent << "      | \\____/ |     \\|       \\ " << "\t\t         " << "\033[1;35m" << "Score:  " << resetColor() << "\033[1;34m" << score << resetColor() << endl;
     cout << indent << "       \\______/               | " << "\t            ";
     reddead();
 }
@@ -284,12 +293,11 @@ void printBoardGTA(vector<vector<int>> &board)
     cout << "  ______/ \\-----/ \\______" << "\t\t        " << star_line << endl;
     cout << indent;
     gtasa();
-    cout << "  /      \\  \\   /  /      \\" << "\t\t\t         " <<"\033[1;35m" << "Score:  "<< resetColor() << "\033[1;34m" << score << resetColor() << endl;
+    cout << "  /      \\  \\   /  /      \\" << "\t\t\t         " << "\033[1;35m" << "Score:  " << resetColor() << "\033[1;34m" << score << resetColor() << endl;
     cout << "_______________________ ";
     gtasa();
     cout << " |        \\/-----\\/        |" << "\t            " << endl;
     cout << "|____|_______________(@)" << endl;
-
 }
 void BoardPicker(vector<vector<int>> &board, char pick)
 {
@@ -691,60 +699,69 @@ void InvalidInput()
     usleep(1500000);
 }
 
-//Undo methods
-bool isBoardEqual(vector<vector<int>> &board,vector<vector<int>> &board2) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
+// Undo methods
+bool isBoardEqual(vector<vector<int>> &board, vector<vector<int>> &board2)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {
             if (board[i][j] != board2[i][j])
-                 return false;
-        }
-    }
-    return true;
-}
-
-void copyboard(vector<vector<int>> &board,vector<vector<int>> &Tosaveboard) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            Tosaveboard[i][j] = board[i][j];
-        }
-    }
-}
-bool PrevZeroCheck(vector<vector<int>> &board){
-    for(int i=0;i<SIZE;i++){
-        for(int j=0;j<SIZE;j++){
-            if(board[i][j]!=0)
                 return false;
         }
     }
     return true;
 }
-void undoMove(vector<vector<int>> &board,vector<vector<int>> &prevboard) {
+
+void copyboard(vector<vector<int>> &board, vector<vector<int>> &Tosaveboard)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {
+            Tosaveboard[i][j] = board[i][j];
+        }
+    }
+}
+bool PrevZeroCheck(vector<vector<int>> &board)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {
+            if (board[i][j] != 0)
+                return false;
+        }
+    }
+    return true;
+}
+void undoMove(vector<vector<int>> &board, vector<vector<int>> &prevboard)
+{
     if (!isBoardEqual(board, prevboard) && !PrevZeroCheck(prevboard))
         copyboard(prevboard, board);
 }
 
-void CopyScore(int score,int &prevscore){
-    prevscore=score;
+void CopyScore(int score, int &prevscore)
+{
+    prevscore = score;
 }
 
-void undoScore(int &prevscore,int &score){
-    score=prevscore;
+void undoScore(int &prevscore, int &score)
+{
+    score = prevscore;
 }
-
-
-
 
 int main()
 {
     vector<vector<int>> board;
-    vector<vector<int>> prevboard={{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+    vector<vector<int>> prevboard = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     bool CanGenerate = true;
     bool FirstGenerate = true;
     char theme;
-    bool Start=false;
+    bool Start = false;
     int HighestScore = LastHighestScore();
-    int Prevscore=0;
-    int prevhighestscore=0;
+    int Prevscore = 0;
+    int prevhighestscore = 0;
     string filename = "board.txt";
     ifstream load(filename);
     cout << "Welcome to 2048 by RS - Nhtm - MCyber" << endl;
@@ -764,10 +781,10 @@ int main()
                 board = LoadSave(filename);
                 theme = LoadLastTheme(filename);
                 score = LoadLastRawScore(filename);
-                FirstGenerate=false;
+                FirstGenerate = false;
                 CanGenerate = false;
                 LastGameContinue = false;
-                Start=true;
+                Start = true;
                 usleep(2000000);
                 break;
             }
@@ -796,7 +813,7 @@ int main()
                     }
                 }
                 LastGameContinue = false;
-                Start=true;
+                Start = true;
                 break;
             }
         }
@@ -815,12 +832,13 @@ int main()
             {
                 cout << "\nPick a board :" << endl;
                 cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
-                get:
+            get:
                 theme = _getch();
-                if(theme==49 or theme==50 or theme==51){
-                NewGameStart = false;
-                Start=true;
-                break;
+                if (theme == 49 or theme == 50 or theme == 51)
+                {
+                    NewGameStart = false;
+                    Start = true;
+                    break;
                 }
                 else
                     goto get;
@@ -837,160 +855,167 @@ int main()
     load.close();
     // Main Loop Of the game
 
-    if(Start){
-    while (true)
+    if (Start)
     {
-        if (checklose(board))
+        while (true)
         {
-            SaveHighScore();
-            filesystem::remove(filename);
-            cout << "\nYou Lost ! ";
-            cout << "\nWanna start a new game ? (y/n)";
-            
-            bool GameAfterLose = true;
-            while (GameAfterLose)
+            if (checklose(board))
             {
-               
-                char check = _getch();
-                if (check == 'y')
-                {   
-                    board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
-                    score = 0;
-                    cout << "\nPick a board :" << endl;
-                    cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
-                    theme = _getch();
-                    GameAfterLose = false;
-                    CanGenerate = true;
-                    FirstGenerate = true;
-                }
-                else if (check == 'n')
+                SaveHighScore();
+                filesystem::remove(filename);
+                cout << "\nYou Lost ! ";
+                cout << "\nWanna start a new game ? (y/n)";
+
+                bool GameAfterLose = true;
+                while (GameAfterLose)
                 {
-                    cout << "\nBye my friend ...." << endl;
-                    usleep(1500000);
-                    return EXIT_SUCCESS;
-                }
-            }
-        }
 
-        system("cls");
-
-        if (FirstGenerate)
-        {
-            RandomGenerator(board);
-            RandomGenerator(board);
-            FirstGenerate = false;
-        }
-        else if (CanGenerate)
-            RandomGenerator(board);
-
-        if (LastHighestScore() < HighScore() and HighScore()>prevhighestscore)
-            HighestScore = HighScore();
-
-        cout <<"\t\t\t\t\t\t\t\t\t  " << "\033[1;32m" << "Highest score is:  ";
-        space(HighestScore);
-        cout << resetColor() << "\033[1;34m" << HighestScore << resetColor()<< "\n";
-        BoardPicker(board, theme);
-        cout << "\n*Press Q to quit game* \n";
-        cout << "\nDo a move (w/s/a/d) : ";
-        cout << "\n(Press u to undo)";
-
-        // get input
-        char PlayerMovement = _getch();
-
-        switch (PlayerMovement)
-        {
-        case 'w':
-            copyboard(board, prevboard);
-            CopyScore(score,Prevscore);
-            if (canMoveUp(board))
-            {
-                MoveUp(board);
-                CanGenerate = true;
-            }
-            else
-                CanGenerate = false;
-            break;
-        case 'a':
-            copyboard(board, prevboard);
-            CopyScore(score,Prevscore);
-            if (canMoveLeft(board))
-            {
-                MoveLeft(board);
-                CanGenerate = true;
-            }
-            else
-                CanGenerate = false;
-            break;
-        case 's':
-            copyboard(board, prevboard);
-            CopyScore(score,Prevscore);
-            if (canMoveDown(board))
-            {
-                MoveDown(board);
-                CanGenerate = true;
-            }
-            else
-                CanGenerate = false;
-            break;
-        case 'd':
-            copyboard(board, prevboard);
-            CopyScore(score,Prevscore);
-            if (canMoveRight(board))
-            {
-                MoveRight(board);
-                CanGenerate = true;
-            }
-            else
-                CanGenerate = false;
-            break;
-        case 'q':
-            if (true)
-            {
-                cout << "\nDo you wnat to exit ? (y/n)";
-                char QuitSure = _getch();
-                if (QuitSure == 'y')
-                {
-                    cout << "\nDo you wnat to save this game or not ? (y/n)";
-                    char SaveSure = _getch();
-                    if (SaveSure == 'y')
+                    char check = _getch();
+                    if (check == 'y')
                     {
-                        if(prevhighestscore>score)
-                            SaveHighScore2(prevhighestscore);
-                        else
-                            SaveHighScore();
-                        SaveBoard(board, filename, theme, score);
-                        cout << "\ngame successfully saved !"<< "\nBye my friend ....";
-                        usleep(1800000);
-                        return 0;
+                        board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+                        score = 0;
+                        cout << "\nPick a board :" << endl;
+                        cout << "Enter number Breaking Bad(1) , Red Dead Redemption(2) , GTA(3) : ";
+                        theme = _getch();
+                        GameAfterLose = false;
+                        CanGenerate = true;
+                        FirstGenerate = true;
                     }
-                    else if(SaveSure == 'n'){
+                    else if (check == 'n')
+                    {
                         cout << "\nBye my friend ...." << endl;
-                        usleep(1000000);
+                        usleep(1500000);
                         return EXIT_SUCCESS;
                     }
                 }
+            }
+
+            system("cls");
+
+            if (FirstGenerate)
+            {
+                RandomGenerator(board);
+                RandomGenerator(board);
+                FirstGenerate = false;
+            }
+            else if (CanGenerate)
+                RandomGenerator(board);
+
+            if (LastHighestScore() < HighScore() and HighScore() > prevhighestscore)
+                HighestScore = HighScore();
+
+            cout << "\t\t\t\t\t\t\t\t\t  " << "\033[1;32m" << "Highest score is:  ";
+            space(HighestScore);
+            cout << resetColor() << "\033[1;34m" << HighestScore << resetColor() << "\n";
+            BoardPicker(board, theme);
+            cout << "\n*Press Q to quit game* \n";
+            cout << "\nDo a move (w/s/a/d) : ";
+            cout << "\n(Press u to undo)  ";
+
+            // get input
+            char PlayerMovement = _getch();
+
+            switch (PlayerMovement)
+            {
+            case 'w':
+                copyboard(board, prevboard);
+                CopyScore(score, Prevscore);
+                if (canMoveUp(board))
+                {
+                    MoveUp(board);
+                    CanGenerate = true;
+                }
                 else
                     CanGenerate = false;
-            }
+                break;
+            case 'a':
+                copyboard(board, prevboard);
+                CopyScore(score, Prevscore);
+                if (canMoveLeft(board))
+                {
+                    MoveLeft(board);
+                    CanGenerate = true;
+                }
+                else
+                    CanGenerate = false;
+                break;
+            case 's':
+                copyboard(board, prevboard);
+                CopyScore(score, Prevscore);
+                if (canMoveDown(board))
+                {
+                    MoveDown(board);
+                    CanGenerate = true;
+                }
+                else
+                    CanGenerate = false;
+                break;
+            case 'd':
+                copyboard(board, prevboard);
+                CopyScore(score, Prevscore);
+                if (canMoveRight(board))
+                {
+                    MoveRight(board);
+                    CanGenerate = true;
+                }
+                else
+                    CanGenerate = false;
+                break;
+            case 'q':
+                if (true)
+                {
+                    cout << "\nDo you wnat to exit ? (y/n)";
+                    char QuitSure = _getch();
+                    if (QuitSure == 'y')
+                    {
+                        cout << "\nDo you wnat to save this game or not ? (y/n)";
+                        char SaveSure = _getch();
+                        if (SaveSure == 'y')
+                        {
+                            if (prevhighestscore > score)
+                                SaveHighScore2(prevhighestscore);
+                            else
+                                SaveHighScore();
+                            SaveBoard(board, filename, theme, score);
+                            cout << "\ngame successfully saved !" << "\nBye my friend ....";
+                            usleep(1800000);
+                            return 0;
+                        }
+                        else if (SaveSure == 'n')
+                        {
+                            if (prevhighestscore > score)
+                                SaveHighScore2(prevhighestscore);
+                            else
+                                SaveHighScore();
+                            cout << "\nBye my friend ...." << endl;
+                            usleep(1000000);
+                            return EXIT_SUCCESS;
+                        }
+                    }
+                    else
+                        CanGenerate = false;
+                }
 
-            break;
-        case 'u':
-            prevhighestscore=HighestScore;
-            if(!checklose(prevboard)){
-                undoMove(board,prevboard);
-                score = Prevscore;
-            }
-            CanGenerate=false;
-            break;
+                break;
+            case 'u':
+                prevhighestscore = HighestScore;
+                if (!checklose(prevboard))
+                {
+                    undoMove(board, prevboard);
+                    score = Prevscore;
+                }
+                CanGenerate = false;
+                break;
 
-        case 13:
-            CanGenerate = false;
-            break;
-        default:
-            InvalidInput();
-            CanGenerate = false;
-            break;
+            case 13:
+                CanGenerate = false;
+                break;
+            default:
+                InvalidInput();
+                CanGenerate = false;
+                break;
+            }
         }
-    }
     }
 }
