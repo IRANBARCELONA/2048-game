@@ -333,6 +333,18 @@ bool checklose(vector<vector<int>> &board)
     }
     return true;
 }
+bool checkwin(vector<vector<int>> &board)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {
+            if (board[i][j] == 2048)
+                return true;
+        }
+    }
+    return false;
+}
 // functions and movements
 int HighScore()
 {
@@ -891,6 +903,17 @@ int main()
                 }
             }
 
+            if (checkwin(board))
+            {
+                system("cls");
+                BoardPicker(board, theme);
+                SaveHighScore();
+                filesystem::remove(filename);
+                cout << "\n\t  " << "\033[1;32m" << "C'mon bro go out and touch grass!";
+
+                usleep(6000000);
+                return EXIT_SUCCESS;
+            }
             system("cls");
 
             if (FirstGenerate)
